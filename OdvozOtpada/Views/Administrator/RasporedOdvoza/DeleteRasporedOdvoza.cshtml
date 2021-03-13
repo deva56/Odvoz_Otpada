@@ -1,0 +1,91 @@
+﻿@model OdvozOtpada.Models.rasporedodvoza
+
+@{
+    ViewBag.Title = "Brisanje rasporeda odvoza otpada";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<br />
+<h2 class="text-center">Brisanje podatke o rasporedu odvoza iz baze</h2>
+
+<h3 class="text-center">Jeste li sigurni da želite obrisati ovaj raspored odvoza iz baze?</h3>
+
+<hr />
+<div class="col-md-12 text-center">
+    <div class="text-center">
+        <div style="display:inline-block">
+            Datum kreiranja:
+        </div>
+        <div style="display:inline-block">
+            @Html.DisplayFor(model => model.datumKreiranja)
+        </div>
+    </div>
+
+    <div class="text-center">
+        <div style="display:inline-block">
+            Vrsta otpada:
+        </div>
+        <div style="display:inline-block">
+            @Html.DisplayFor(model => model.otpad.vrstaOtpad)
+        </div>
+    </div>
+
+    <div class="text-center">
+        <div style="display:inline-block">
+            Ime grada:
+        </div>
+        <div style="display:inline-block">
+            @Html.DisplayFor(model => model.grad.imeGrad)
+        </div>
+    </div>
+
+    <div class="text-center">
+        <div style="display:inline-block">
+            Ime ulice:
+        </div>
+        <div style="display:inline-block">
+            @Html.DisplayFor(model => model.ulica.imeUlica)
+        </div>
+    </div>
+
+    <div class="text-center">
+        <div style="display:inline-block">
+            Dan tjedna odvoza:
+        </div>
+        <div style="display:inline-block">
+            @Html.DisplayFor(model => model.danTjednaOdvoza)
+        </div>
+    </div>
+
+    <div class="text-center">
+        <div style="display:inline-block">
+            Datum odvoza:
+        </div>
+        <div style="display:inline-block">
+            @Html.DisplayFor(model => model.datumOdvoza)
+        </div>
+    </div>
+
+    <div class="text-center">
+        <div style="display:inline-block">
+            Vrijeme odvoza:
+        </div>
+        <div style="display:inline-block">
+            @Html.DisplayFor(model => model.vrijemeOdvoza)
+        </div>
+    </div>
+    <br />
+</div>
+   
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color text-center">
+        <input type="submit" value="Obriši" class="btn btn-primary" /> |
+        @Html.ActionLink("Odustani", "IndexRasporedOdvoza")
+    </div>
+}
+
+

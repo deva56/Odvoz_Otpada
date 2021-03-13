@@ -1,0 +1,45 @@
+﻿@model IEnumerable<OdvozOtpada.Models.ulica>
+
+@{
+    ViewBag.Title = "Upravljanje ulicama u bazi";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<br />
+<br />
+
+<p>
+    @Html.ActionLink("Dodaj novu ulicu", "CreateUlica")
+</p>
+<table class="table text-center">
+    <tr>
+        <th class="text-center">
+            Ime ulice
+        </th>
+          <th class="text-center">
+            Ime grada
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.imeUlica)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.grad.imeGrad)
+    </td>
+    <td>
+        @Html.ActionLink("Ažuriraj", "EditUlica", new { id = item.idUlica }) |
+        @Html.ActionLink("Obriši", "DeleteUlica", new { id = item.idUlica })
+    </td>
+</tr>
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink("Natrag", "IndexAdreseOdvoza")
+</div>

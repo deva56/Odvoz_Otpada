@@ -1,0 +1,35 @@
+﻿@model OdvozOtpada.Models.ulica
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ulica</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.grad.imeGrad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.grad.imeGrad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.imeUlica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imeUlica)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idUlica }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

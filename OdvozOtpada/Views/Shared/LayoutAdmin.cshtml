@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Odvoz otpada</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Natrag na početnu", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Upravljaj adminima", "IndexAdmin", "Administrator")</li>
+                    <li>@Html.ActionLink("Upravljaj otpadom", "IndexOtpad", "Administrator")</li>
+                    <li>@Html.ActionLink("Upravljaj adresama za odvoz", "IndexAdreseOdvoza", "Administrator")</li>
+                    <li>@Html.ActionLink("Upravljaj rasporedom odvoza", "IndexRasporedOdvoza", "Administrator")</li>
+                </ul>
+                @Html.Partial("_LoginPartialAdminPaneli")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+    </div>
+   
+    <footer style="position:fixed;bottom:0px;width:100%;background-color:burlywood">
+        <p class="text-center">&copy; @DateTime.Now.Year - Odvoz otpada d.d.</p>
+    </footer>
+     
+   
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

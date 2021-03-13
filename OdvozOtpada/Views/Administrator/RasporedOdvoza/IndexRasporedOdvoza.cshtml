@@ -1,0 +1,25 @@
+﻿@model Tuple<List<OdvozOtpada.Models.rasporedodvoza>, OdvozOtpada.Models.FiltrirajPretraživanje>
+
+@{
+    ViewBag.Title = "Upravljanje rasporedom odvoza otpada";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<br />
+<h2 class="text-center">Upravljanje rasporedom odvoza otpada u bazi</h2>
+
+<p>
+    @Html.ActionLink("Kreiraj novi raspored odvoza", "CreateRasporedOdvoza")
+</p>
+
+<div>
+    @{ Html.RenderPartial("~/Views/Administrator/RasporedOdvoza/FilterRasporedOdvoza.cshtml", Model.Item2); }
+</div>
+
+
+<br />
+<br />
+
+<div id="partialView">
+    @{ Html.RenderPartial("~/Views/Administrator/RasporedOdvoza/RasporedOdvozaListPartial.cshtml", Model.Item1); }
+</div>

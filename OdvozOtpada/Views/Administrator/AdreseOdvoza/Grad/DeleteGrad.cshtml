@@ -1,0 +1,30 @@
+﻿@model OdvozOtpada.Models.grad
+
+@{
+    ViewBag.Title = "Brisanje grada";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<br />
+<h2 class="text-center">Brisanje grada iz baze</h2>
+
+<h3 class="text-center">Jeste li sigurni da želite obrisati ovaj grad iz baze?</h3>
+
+<div>
+    <hr />
+
+    <div class="text-center">
+        Ime grada:
+        @Html.DisplayFor(model => model.imeGrad)
+    </div>
+    <br />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color text-center">
+            <input type="submit" value="Obriši" class="btn btn-primary" /> |
+            @Html.ActionLink("Odustani", "IndexGrad")
+        </div>
+    }
+</div>

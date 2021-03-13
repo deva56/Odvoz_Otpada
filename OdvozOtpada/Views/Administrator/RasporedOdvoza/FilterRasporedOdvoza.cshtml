@@ -1,0 +1,96 @@
+﻿@model OdvozOtpada.Models.FiltrirajPretraživanje
+
+@{
+    AjaxOptions ajaxOptions = new AjaxOptions
+    {
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "partialView"
+    };
+}
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+@using (Ajax.BeginForm("FiltriranjeRasporedaOdvoza", "Administrator", ajaxOptions, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    var dani = new SelectList(
+        new List<SelectListItem>
+        {
+        new SelectListItem { Text = "Ponedjeljak", Value = "Ponedjeljak" },
+        new SelectListItem { Text = "Utorak", Value = "Utorak" },
+        new SelectListItem { Text = "Srijeda", Value = "Srijeda" },
+        new SelectListItem { Text = "Četvrtak", Value = "Četvrtak" },
+        new SelectListItem { Text = "Petak", Value = "Petak" },
+        new SelectListItem { Text = "Subota", Value = "Subota" },
+        new SelectListItem { Text = "Nedjelja", Value = "Nedjelja" },
+                                                                    }, "Value", "Text");
+
+    <div class="row text-center">
+        <div class="form-group" style="display:inline-block">
+            <div class="col-md-12">
+                @Html.TextBoxFor(model => model.tekstPretraživanja, htmlAttributes: new { id = "textbox", @class = "form-control", @placeholder = "Vaša pretraga" })
+                @Html.ValidationMessageFor(model => model.tekstPretraživanja, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="display:inline-block">
+            <div class="col-md-12">
+                Vrsta otpada
+                @Html.DropDownListFor(model => model.otpad, (SelectList)ViewBag.idVrsteOtpada, "Odaberite", htmlAttributes: new { id = "dropdown1", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.otpad, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="display:inline-block">
+            <div class="col-md-12">
+                Grad
+                @Html.DropDownListFor(model => model.grad, (SelectList)ViewBag.idGrad, "Odaberite grad", htmlAttributes: new { id = "idGrad", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.grad, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="display:inline-block">
+            <div class="col-md-12">
+                Ulica
+                @Html.DropDownListFor(model => model.ulica, new SelectList(string.Empty, "idUlica", "imeUlica"), "Prvo odaberite grad", htmlAttributes: new { id = "idUlice", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ulica, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="display:inline-block">
+            <div class="col-md-12">
+                Dan odvoza
+                @Html.DropDownListFor(model => model.dan, dani, "Odaberite", htmlAttributes: new { id = "dropdown4", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.dan, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group" style="display:inline-block">
+            <div class="col-md-12">
+                <input type="submit" name="filtriraj" value="Filtriraj" class="btn btn-primary" id="gumb2" />
+            </div>
+        </div>
+    </div>
+}
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#idGrad").change(function () {
+            var url = '@Url.Content("~/Administrator/GradChanged")';
+            $.get(url, { idGrad: $("#idGrad").val() }, function (data) {
+                var items = '';
+                $("#idUlice").empty();
+                items += "<option value='" +  "'>" + "Odaberite ulicu" + "</option>";
+                $.each(data, function (index, row) {
+                    items += "<option value='" + row.Value + "'>" + row.Text + "</option>";
+                });
+                $("#idUlice").html(items);
+            });
+        })
+    });
+
+</script>

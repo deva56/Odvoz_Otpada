@@ -1,0 +1,39 @@
+﻿@model IEnumerable<OdvozOtpada.Models.grad>
+
+@{
+    ViewBag.Title = "Upravljanje gradovima u bazi";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<br />
+<br />
+
+<p>
+    @Html.ActionLink("Dodaj novi grad", "CreateGrad")
+</p>
+<table class="table text-center">
+    <tr>
+        <th class="text-center">
+            Ime grada
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.imeGrad)
+            </td>
+            <td>
+                @Html.ActionLink("Ažuriraj", "EditGrad", new { id = item.idGrad }) |
+                @Html.ActionLink("Obriši", "DeleteGrad", new { id = item.idGrad })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink("Natrag", "IndexAdreseOdvoza")
+</div>

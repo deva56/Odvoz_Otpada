@@ -1,0 +1,47 @@
+﻿@model IEnumerable<OdvozOtpada.Models.aspnetusers>
+
+@{
+    ViewBag.Title = "Naslovna stranica za upravljanje adminima";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<br />
+<h2 class="text-center">Upravljanje administratorima u bazi</h2>
+<br />
+<p>
+    @Html.ActionLink("Kreiraj novog admina", "CreateAdmin")
+</p>
+<br />
+<div class="text-center">
+    <table class="table">
+        <tr>
+            <th class="text-center">
+                Korisničko ime
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.ActionLink("Promijeni lozinku", "EditAdmin", new { id = item.Id }) |
+                    @*@Html.ActionLink("Details", "Details", new { id=item.Id }) |*@
+                    @Html.ActionLink("Obriši", "DeleteAdmin", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("Ne možete obrisati račun jer ste trenutno ulogirani u njega!");
+        };
+    </script>
+}

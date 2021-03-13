@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Upravljanje adresama odvoza otpada";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<br />
+<h2 class="text-center">
+    Upravljaj gradovima i ulicama u bazi u kojima se vrši odvoz
+    otpada
+</h2>
+<br />
+<hr />
+
+<div class="text-center">
+    <p>
+        @Html.ActionLink("Upravljaj gradovima u bazi", "IndexGrad", new { @class = "btn btn-primary" })
+    </p>
+    <br />
+    <p>
+        @Html.ActionLink("Upravljaj ulicama u bazi", "IndexUlica")
+    </p>
+</div>
+
+<br />

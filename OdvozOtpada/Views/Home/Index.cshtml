@@ -1,0 +1,185 @@
+﻿@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Naslovna";
+    Layout = "";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="generator" content="Mobirise v4.12.0, mobirise.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link rel="shortcut icon" href="~/assets/images/odvozOtpadaLogo.png" type="image/x-icon">
+    <meta name="description" content="">
+
+    <title>Naslovna - Odvoz otpada</title>
+    <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="assets/socicon/css/styles.css">
+    <link rel="stylesheet" href="assets/tether/tether.min.css">
+    <link rel="stylesheet" href="assets/dropdown/css/style.css">
+    <link rel="stylesheet" href="assets/theme/css/style.css">
+    <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css">
+    <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+
+
+
+</head>
+<body>
+    <section class="menu cid-qTkzRZLJNu" once="menu" id="menu1-0">
+
+        <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="menu-logo">
+                <div class="navbar-brand">
+                    <span class="navbar-logo">
+                        <a>
+                            <img src="~/assets/images/odvozOtpadaLogo.png" style="height: 3.8rem;">
+                        </a>
+                    </span>
+                    <span class="navbar-caption-wrap">
+                        <a class="navbar-caption text-white display-4">
+                            Odvoz otpada d.d.
+                        </a>
+                    </span>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                @if (Request.IsAuthenticated)
+                {
+                    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
+                            <li class="nav-item">
+                                @Html.ActionLink("Pozdrav " + User.Identity.GetUserName() + "!", "AdminManagePanel", "Administrator", routeValues: null, htmlAttributes: new { title = "AdminManagePanel" })
+                            </li>
+                            <li class="nav-item"><a href="javascript:document.getElementById('logoutForm').submit()">Izlogiraj me</a></li>
+                        </ul>
+                    }
+                }
+                else
+                {
+                    <ul class="nav navbar navbar-right">
+                        @*<li>@Html.ActionLink("Registriraj se", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>*@
+                        <li style="margin-left:50px">@Html.ActionLink("Login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                    </ul>
+                }
+                @*<div class="navbar-buttons mbr-section-btn">
+                        <a class="btn btn-sm btn-primary display-4" href="https://mobirise.com">
+                            <span class="mbri-mobirise mbr-iconfont mbr-iconfont-btn"></span>
+
+                            Try It Now!
+                        </a>
+                    </div>*@
+            </div>
+        </nav>
+    </section>
+    <section class="cid-qTkA127IK8 mbr-fullscreen mbr-parallax-background" id="header2-1">
+
+
+        <div class="container align-center">
+            <div class="row justify-content-md-center">
+                <div class="mbr-white col-md-10">
+                    <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1" style="        color: red;
+        background-color: lightgrey;
+        display: inline-block">
+                        Odvoz otpada d.d.
+                    </h1>
+
+                    <p class="mbr-text pb-3 mbr-fonts-style display-5" style="color:red;background-color:lightgrey;display:inline-block">
+                        Mi se brinemo za čistoću u Vašem gradu.
+                    </p>
+                    <div class="mbr-section-btn">
+                        <a class="btn btn-md btn-secondary display-4" href="@Url.Action("RasporedOdvoza", "Home")">Pronađi raspored odvoza otpada</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="cid-qTkAaeaxX5" id="footer1-2">
+
+
+        <div class="container">
+            <div class="media-container-row content text-white">
+                <div class="col-12 col-md-3 mbr-fonts-style display-7">
+                    <h5 class="pb-3">
+                        Adresa
+                    </h5>
+                    <p class="mbr-text">
+                        Josipa Bana Jelačića 22A
+                        <br>Čakovec, 40000
+                    </p>
+                </div>
+                <div class="col-12 col-md-3 mbr-fonts-style display-7">
+                    <h5 class="pb-3">
+                        Kontakt
+                    </h5>
+                    <p class="mbr-text">
+                        Email: odvoz.otpada@gmail.com
+                        <br>Telefon: +1 (0) 000 0000 001
+                        <br>Fax: +1 (0) 000 0000 002
+                    </p>
+                </div>
+            </div>
+            <div class="footer-lower">
+                <div class="media-container-row">
+                    <div class="col-sm-12">
+                        <hr>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="social-list align-right">
+                        <div class="soc-item">
+                            <a target="_blank">
+                                <span class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span>
+                            </a>
+                        </div>
+                        <div class="soc-item">
+                            <a target="_blank">
+                                <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="media-container-row mbr-white">
+                    <div class="col-sm-6 copyright">
+                        <p class="mbr-text mbr-fonts-style display-7">
+                            © Copyright @DateTime.Now.Year. Odvoz otpada d.d. - Sva prava pridržana
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="assets/web/assets/jquery/jquery.min.js"></script>
+    <script src="assets/popper/popper.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/tether/tether.min.js"></script>
+    <script src="assets/dropdown/js/nav-dropdown.js"></script>
+    <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+    <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+    <script src="assets/parallax/jarallax.min.js"></script>
+    <script src="assets/smoothscroll/smooth-scroll.js"></script>
+    <script src="assets/theme/js/script.js"></script>
+
+
+</body>
+</html>
+

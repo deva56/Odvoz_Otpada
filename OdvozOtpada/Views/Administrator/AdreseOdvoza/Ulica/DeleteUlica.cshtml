@@ -1,0 +1,34 @@
+﻿@model OdvozOtpada.Models.ulica
+
+@{
+    ViewBag.Title = "Brisanje ulice";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<br />
+<h2 class="text-center">Brisanje ulice iz baze</h2>
+
+<h3 class="text-center">Jeste li sigurni da želite obrisati ovu ulicu iz baze?</h3>
+
+<div>
+    <hr />
+    <div class="text-center">
+        Ime ulice:
+        @Html.DisplayFor(model => model.imeUlica)
+    </div>
+    <div class="text-center">
+        Ime grada:
+        @Html.DisplayFor(model => model.grad.imeGrad)
+    </div>
+    <br />
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color text-center">
+            <input type="submit" value="Obriši" class="btn btn-primary" /> |
+            @Html.ActionLink("Natrag", "IndexUlica")
+        </div>
+    }
+</div>

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<OdvozOtpada.Models.otpad>
+
+@{
+    ViewBag.Title = "Upravljanje otpadom";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<br />
+<h2 class="text-center">Upravljanje bazom podataka vrsta otpada</h2>
+
+<p>
+    @Html.ActionLink("Dodaj novu vrstu otpada", "CreateOtpad")
+</p>
+<br />  
+<table class="table text-center">
+    <tr>
+        <th class="text-center">
+            Vrsta otpada: 
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.vrstaOtpad)
+        </td>
+        <td>
+            @Html.ActionLink("Uredi", "EditOtpad", new { id=item.idOtpad }) |
+            @Html.ActionLink("Obriši", "DeleteOtpad", new { id=item.idOtpad })
+        </td>
+    </tr>
+}
+
+</table>

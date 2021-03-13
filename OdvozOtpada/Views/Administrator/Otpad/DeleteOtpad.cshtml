@@ -1,0 +1,28 @@
+﻿@model OdvozOtpada.Models.otpad
+
+@{
+    ViewBag.Title = "Brisanje otpada iz baze";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<br />  
+<h2 class="text-center">Brisanje otpada iz baze</h2>
+
+<h3 class="text-center">Jeste li sigurni da želite obrisati ovu vrstu otpada iz baze?</h3>
+<div>
+    <hr />
+  
+    <div class="text-center">
+        Vrsta otpada:
+        @Html.DisplayFor(model => model.vrstaOtpad)
+    </div>
+      <br />
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color text-center">
+            <input type="submit" value="Obriši" class="btn btn-primary" /> |
+            @Html.ActionLink("Odustani", "IndexOtpad")
+        </div>
+    }
+</div>

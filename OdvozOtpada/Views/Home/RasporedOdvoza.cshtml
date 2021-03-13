@@ -1,0 +1,29 @@
+﻿@model Tuple<List<OdvozOtpada.Models.rasporedodvoza>, OdvozOtpada.Models.FiltrirajPretraživanje>
+
+@{
+    Layout = "~/Views/Shared/LayoutRasporedOdvoza.cshtml";
+}
+
+<br />
+<br />
+
+<h2 class="text-center">Tjedni raspored odvoza otpada</h2>
+<br />
+
+<br />
+<br />
+
+<div>
+    @{ Html.RenderPartial("Filter", Model.Item2); }
+</div>
+
+
+<br />
+<br />
+
+<div id="partialView">
+    @{ Html.RenderPartial("RasporedOdvozaList", Model.Item1); }
+</div>
+
+
+

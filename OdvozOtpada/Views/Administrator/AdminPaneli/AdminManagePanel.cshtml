@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "AdminManagePanel";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<br />
+<hr />
+<h2 class="text-center">Admin upravljačka ploča</h2>
+<hr />
+
+<div class="text-center">
+<p>
+    @Html.ActionLink("Upravljaj adminima u bazi", "IndexAdmin", new { @class = "btn btn-primary"})
+</p>
+<br />
+<p>
+    @Html.ActionLink("Upravljaj podacima o otpadu u bazi", "IndexOtpad")
+</p>
+<br />
+<p>
+    @Html.ActionLink("Upravljaj podacima o ulicama, gradovima u kojima se vrši odvoz otpada", "IndexAdreseOdvoza")
+</p>
+<br />
+<p>
+    @Html.ActionLink("Upravljaj rasporedima odvoza otpada po danima u tjednu", "IndexRasporedOdvoza")
+</p>
+</div>

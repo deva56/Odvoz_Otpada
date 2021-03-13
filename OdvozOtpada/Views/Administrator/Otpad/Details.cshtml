@@ -1,0 +1,26 @@
+﻿@model OdvozOtpada.Models.otpad
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>otpad</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.vrstaOtpad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vrstaOtpad)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idOtpad }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

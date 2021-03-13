@@ -1,0 +1,43 @@
+﻿@model OdvozOtpada.Models.ulica
+
+@{
+    ViewBag.Title = "Kreiranje ulice";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<br />
+<h2 class="text-center">Dodaj novu ulicu u bazu podataka</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <hr />
+        <center>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group col-md-12">
+                @Html.LabelFor(model => model.idGrada, "Ime grada", htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownList("idGrada", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.idGrada, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group col-md-12">
+                @Html.Label("Ime ulice", htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.imeUlica, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.imeUlica, "", new { @class = "text-danger" })
+            </div>
+        </center>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12 text-center">
+            <input type="submit" value="Kreiraj" class="btn btn-primary" />
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Natrag", "IndexUlica")
+</div>

@@ -1,0 +1,72 @@
+﻿@model IEnumerable<OdvozOtpada.Models.rasporedodvoza>
+
+@{
+    if (Model.Count() == 0)
+    {
+        <h2 class="text-center">Nema rezultata koji odgovaraju vašoj pretragi. Pokušajte ponovno.</h2>
+    }
+    else
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.datumKreiranja)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.otpad.vrstaOtpad)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.grad.imeGrad)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ulica.imeUlica)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.danTjednaOdvoza)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.datumOdvoza)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.vrijemeOdvoza)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.datumKreiranja)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.otpad.vrstaOtpad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.grad.imeGrad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ulica.imeUlica)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.danTjednaOdvoza)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.datumOdvoza)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.vrijemeOdvoza)
+            </td>
+            <td>
+                @Html.ActionLink("Ažuriraj", "EditRasporedOdvoza", new { id = item.idRasporedaOdvoza }) |
+                @Html.ActionLink("Obriši", "DeleteRasporedOdvoza", new { id = item.idRasporedaOdvoza })
+            </td>
+        </tr>
+            }
+
+        </table>
+        }
+
+    }
+
+
